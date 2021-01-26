@@ -1,0 +1,4 @@
+name: football-predictions
+recipe: laravel
+config:
+  webroot: public
