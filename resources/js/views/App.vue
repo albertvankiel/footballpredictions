@@ -2,7 +2,8 @@
     <div>
         <p>
             <router-link :to="{ name: 'home' }">Home</router-link>
-            <router-link :to="{ name: 'about'}">About</router-link>
+            <router-link :to="{ name: 'about' }">About</router-link>
+            <router-link :to="{ name: 'register' }">Register</router-link>
         </p>
 
         <div class="container">
@@ -12,11 +13,7 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

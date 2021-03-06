@@ -1,44 +1,50 @@
-require('./bootstrap.js');
+require("./bootstrap.js");
 
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import '../css/app.css'
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+import "../css/app.css";
 
 // Make BootstrapVue available throughout your project
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
+Vue.use(IconsPlugin);
 
 //Main pages
-import App from './views/App.vue';
-import Home from './views/Home.vue';
-import About from './views/About.vue';
+import App from "./views/App.vue";
+import Home from "./views/Home.vue";
+import About from "./views/About.vue";
+import Register from "./views/Register.vue";
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-    mode: 'history',
+    mode: "history",
     routes: [
         {
-            path: '/',
-            name: 'home',
-            component: Home
+            path: "/",
+            name: "home",
+            component: Home,
         },
         {
-            path: '/',
-            name: 'about',
-            component: About
-        }
-    ]
-})
+            path: "/about",
+            name: "about",
+            component: About,
+        },
+        {
+            path: "/register",
+            name: "register",
+            component: Register,
+        },
+    ],
+});
 
 const app = new Vue({
-    el: '#app',
+    el: "#app",
     components: { App },
-    router
+    router,
 });
