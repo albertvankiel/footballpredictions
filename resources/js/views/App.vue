@@ -7,7 +7,6 @@
         </p>
 
         <div class="container">
-            <h1>negers</h1>
             <router-view></router-view>
         </div>
     </div>
