@@ -11,7 +11,12 @@
                 v-model="username"
             />
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" v-model="mail" />
+            <input
+                type="email"
+                id="email"
+                name="email"
+                v-model="email"
+            />
             <label for="password">Wachtwoord:</label>
             <input
                 type="password"
@@ -26,7 +31,7 @@
                 id="password_confirm"
                 name="password_confirm"
                 required
-                v-model="password_confirm"
+                v-model="password_confirmation"
             />
             <button @click.prevent="register">Maak aan</button>
         </form>
@@ -39,19 +44,23 @@ export default {
     data() {
         return {
             username: null,
-            mail: null,
+            email: null,
             password: null,
-            password_confirm: null
+            password_confirmation: null
         };
     },
     methods: {
         register: function() {
-            let formData = new FormData();
-            formData.append("email", this.mail);
-            if (this.password !== this.password_confirm) {
-                console.log("Staat niet gelijk");
+            if (this.password !== this.password_confirmation) {
+                return;
             }
-            console.log(password);
+
+            let formData = new FormData();
+            formData.append('email', this.email);
+            formData.append('password', this.password);
+            formData.append('password_confirmation', this.password_confirmation);
+            formData.append('username', this.username);
+
             axios.post("/api/register", formData);
         }
     }

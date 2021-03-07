@@ -1,24 +1,33 @@
 <?php
 
+namespace App\Http\Repositories;
+
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements RepositoryInterface
 {
     /**
-     * @var User The user model.
+     * @var \App\Models\User The user model.
      */
-    protected User $user;
+    protected $user;
+
+    /**
+     * @var \Illuminate\Support\Facades\Hash The hash.
+     */
+    protected $hash;
 
     /**
      * UserRepository constructor.
      *
-     * @param User $user The user model.
+     * @param \App\Models\User                 $user The user model.
+     * @param \Illuminate\Support\Facades\Hash $hash The hash.
      */
-    public function __construct(User $user)
+    public function __construct(User $user, Hash $hash)
     {
         $this->user = $user;
+        $this->hash = $hash;
     }
 
     /**
@@ -34,7 +43,10 @@ class UserRepository implements RepositoryInterface
      */
     public function create(array $data): Model
     {
-        return $this->user->create($data);
+        return $this->user->create(
+            $data,
+            ['password' => Hash::make($data['password'])]
+        );
     }
 
     /**

@@ -3,20 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use Illuminate\Http\Request;
-use UserRepository;
+use App\Http\Repositories\UserRepository;
 
 class UserController extends Controller
 {
     /**
-     * @var UserRepository The users repository.
+     * @var \App\Http\Repositories\UserRepository The users repository.
      */
-    protected UserRepository $userRepository;
+    protected $userRepository;
 
     /**
      * UserController constructor.
      *
-     * @param UserRepository $userRepository The users repository.
+     * @param \App\Http\Repositories\UserRepository $userRepository The users repository.
      */
     public function __construct(UserRepository $userRepository) {
         $this->userRepository = $userRepository;
@@ -25,7 +24,7 @@ class UserController extends Controller
     /**
      * Register user.
      *
-     * @param UserRequest $request User requested.
+     * @param \App\Http\Repositories\UserRepository $request User requested.
      */
     public function register(UserRequest $request) {
         $this->userRepository->create($request->validated());
